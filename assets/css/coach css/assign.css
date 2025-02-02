@@ -1,0 +1,17 @@
+/* Responsive design for mobile */
+#recordsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Styling for individual injury records */
+.record-card .card {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.card-title {
+    font-weight: bold;
+}

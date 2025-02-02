@@ -1,0 +1,74 @@
+/* Container styling for #homes */
+#homes .container-fluid {
+    padding: 0;
+    margin: 0;
+}
+
+#homes .slider {
+    position: relative;
+    overflow: hidden;
+}
+
+#homes .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+#homes .slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    
+}
+
+#homes .slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navigation buttons styling */
+#homes .navigation {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+#homes .navigation button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#homes .navigation button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #homes .navigation button {
+        font-size: 1.5rem;
+        padding: 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #homes .navigation button {
+        font-size: 1.2rem;
+        padding: 0.2rem;
+    }
+}
+
+/* Optional: Add some spacing for the slider when on mobile */
+@media (max-width: 768px) {
+    #homes .slider {
+        margin: 0 10px;
+    }
+}
