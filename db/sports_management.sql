@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2025 at 12:56 AM
+-- Generation Time: Feb 02, 2025 at 06:36 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -54,6 +54,13 @@ CREATE TABLE `attendance` (
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`id`, `student_id`, `timestamp`) VALUES
+(2, 'Lucas Alias', '2025-01-25 00:26:06');
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +87,20 @@ INSERT INTO `coaches` (`id`, `name`, `gender`, `sports_id`, `qr_code`, `user_id`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `injury`
+--
+
+CREATE TABLE `injury` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `injury` varchar(255) NOT NULL,
+  `student` varchar(255) NOT NULL,
+  `remarks` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notifications`
 --
 
@@ -94,7 +115,11 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `message`, `created_at`) VALUES
-(50, 'Hello ', '2025-01-24 23:44:44');
+(50, 'Hello ', '2025-01-24 23:44:44'),
+(51, 'G na ulit bukas ', '2025-01-29 10:19:05'),
+(52, 'Gising na nmn ng 4am lezz go!!', '2025-01-29 10:19:55'),
+(53, 'Gising na nmn ng 4am lezz go!!', '2025-01-29 10:19:55'),
+(54, 'luhh doble', '2025-01-29 10:27:37');
 
 -- --------------------------------------------------------
 
@@ -162,7 +187,8 @@ CREATE TABLE `training` (
 --
 
 INSERT INTO `training` (`TrainingID`, `Date`, `Time`, `Title`, `Location`, `Status`, `created_by`) VALUES
-(23, '2025-01-25', '13:34:00', 'day 1', 'school', 'Pending', 77);
+(23, '2025-01-25', '13:34:00', 'day 1', 'school', 'Pending', 77),
+(24, '2025-01-29', '11:25:00', 'Day 5', 'Golden City Club House', 'Pending', 77);
 
 -- --------------------------------------------------------
 
@@ -203,7 +229,8 @@ INSERT INTO `users` (`id`, `lastname`, `firstname`, `middle_initial`, `student_n
 (80, 'Arroyo', 'Justin', 'M', '1-210134', 62.00, 167.00, 22.23, NULL, '09068377106', '1-210134@edu.ph', '$2y$10$SnzT69HSHG5vH0TQHYl36u8qmO3ikkFW4pBQrAug/rwYCNA6w1nyu', 'student', 'male', NULL, NULL, 16, NULL),
 (81, 'Curry', 'Stephen', 'W', '1-231414', 57.00, 169.00, 19.96, NULL, '09367957034', '1-231414@edu.ph', '$2y$10$YEqYMXkya9Ib2jRqCy92f.VxowcE6Ns4Y5/QUjf3Kt2xCwkbM1gNG', 'student', 'male', NULL, NULL, 16, NULL),
 (82, 'Esteron', 'Aron', 'D', '1-210136', 45.00, 167.00, 16.14, NULL, '09369007677', '1-210136@edu.ph', '$2y$10$OAp1ZPqsM72rwe.wo6MSuO8B.jx8gTvyI9x53Xp7.7UT4S/im9F4G', 'student', 'male', NULL, NULL, 17, NULL),
-(83, 'Flaviano', 'Sharlene ', 'W', '1-234242', 55.00, 150.00, 24.44, NULL, '09367957034', '1-234242@edu.ph', '$2y$10$YaIJfoZ/iMly3fa1degmje.7pd/5EvxkDoFt4TSX0WXPuHaQOjNFa', 'student', 'female', NULL, NULL, 17, NULL);
+(83, 'Flaviano', 'Sharlene ', 'W', '1-234242', 55.00, 150.00, 24.44, NULL, '09367957034', '1-234242@edu.ph', '$2y$10$YaIJfoZ/iMly3fa1degmje.7pd/5EvxkDoFt4TSX0WXPuHaQOjNFa', 'student', 'female', NULL, NULL, 17, NULL),
+(84, 'Alias', 'Lucas', 'S', '1-234243', 62.00, 167.00, 22.23, NULL, '09367957034', '1-234243@edu.ph', '$2y$10$MVmCgVl.8oBJoXnGYbAOmuTBgWBFWrX5wxagzChO6/nP0B3wCXQre', 'student', 'male', NULL, NULL, 16, NULL);
 
 --
 -- Triggers `users`
@@ -241,6 +268,12 @@ ALTER TABLE `attendance`
 ALTER TABLE `coaches`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `injury`
+--
+ALTER TABLE `injury`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `notifications`
@@ -282,31 +315,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `approvals`
 --
 ALTER TABLE `approvals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `coaches`
 --
 ALTER TABLE `coaches`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `injury`
+--
+ALTER TABLE `injury`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `requirements`
 --
 ALTER TABLE `requirements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `sports`
@@ -318,13 +357,13 @@ ALTER TABLE `sports`
 -- AUTO_INCREMENT for table `training`
 --
 ALTER TABLE `training`
-  MODIFY `TrainingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `TrainingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- Constraints for dumped tables
