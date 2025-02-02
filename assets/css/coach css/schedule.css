@@ -89,7 +89,7 @@
 }
 
 .attendance-training-options button.P {
-  background-color: green;
+  background-color: #198754;
 }
 
 .attendance-training-options button.A,
@@ -179,7 +179,7 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   margin-bottom: 20px;
-  background-color: green;
+  background-color: #198754;
   color: white;
   text-align: center;
   padding: 10px;
