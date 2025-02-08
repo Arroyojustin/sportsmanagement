@@ -1,33 +1,34 @@
-// Function to fetch and display attendance records
+document.addEventListener("DOMContentLoaded", function () {
+  fetchAttendance();
+});
+
 function fetchAttendance() {
-  fetch('controller/record_attendance.php')  // Replace with the actual path to the PHP script
-    .then(response => response.json())
-    .then(data => {
-      const tbody = document.getElementById('attendance-body');
-      tbody.innerHTML = ''; // Clear existing rows
+  fetch("controller/record_attendance.php") // Update with actual path
+    .then((response) => response.json())
+    .then((data) => {
+      const attendanceBody = document.getElementById("attendance-body");
+      attendanceBody.innerHTML = ""; // Clear existing records
 
-      data.forEach(record => {
-        // Create a new row for each record
-        const row = document.createElement('tr');
-        
-        // Create a cell for Student ID
-        const studentIdCell = document.createElement('td');
-        studentIdCell.textContent = record.student_id;
-        row.appendChild(studentIdCell);
+      data.forEach((record) => {
+        const { student_id, timestamp } = record;
 
-        // Create a cell for Timestamp
-        const timestampCell = document.createElement('td');
-        timestampCell.textContent = record.timestamp;
-        row.appendChild(timestampCell);
+        // Create the attendance card
+        const card = document.createElement("div");
+        card.className = "attendance-card";
+        card.innerHTML = `
+          <div class="attendance-details">
+            <div class="attendance-info">
+              <strong>Student ID: ${student_id}</strong>
+              <p>Timestamp: ${timestamp}</p>
+            </div>
+          </div>
+          <div class="attendance-status">P</div>
+        `;
 
-        // Append the row to the table body
-        tbody.appendChild(row);
+        attendanceBody.appendChild(card);
       });
     })
-    .catch(error => {
-      console.error('Error fetching attendance data:', error);
+    .catch((error) => {
+      console.error("Error fetching attendance data:", error);
     });
 }
-
-// Call the function to fetch data when the page loads
-window.onload = fetchAttendance;

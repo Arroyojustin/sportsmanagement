@@ -2,110 +2,89 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-/* Scoped Attendance Styles */
-#strong .attendance-training-container {
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 15px;
   font-family: Arial, sans-serif;
 }
 
-/* Tabs styling */
-#strong .attendance-training-tabs {
+/* Tabs Styling */
+.attendance-training-tabs {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
 }
 
-#strong .attendance-training-tabs div {
+.attendance-training-tab {
   padding: 10px;
   cursor: pointer;
+  flex: 1;
+  text-align: center;
+  border-bottom: 2px solid transparent;
 }
 
-#strong .attendance-training-tabs div.active {
+.attendance-training-tab.active {
   font-weight: bold;
   border-bottom: 2px solid black;
 }
 
-/* Attendance Tab Content */
-#strong .attendance-tab-content {
+/* Attendance & Training Content */
+.attendance-tab-content,
+.training-tab-content {
   display: none;
 }
 
-#strong .attendance-tab-content.active {
+.attendance-tab-content.active,
+.training-tab-content.active {
   display: block;
 }
 
-/* Training Tab Content */
-#strong .training-tab-content {
-  display: none;
-}
-
-#strong .training-tab-content.active {
-  display: block;
-}
-
-/* Dropdown styling */
-#strong .attendance-training-dropdown {
-  margin-bottom: 10px;
+/* Attendance Card Container */
+#attendance-body {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Attendance Card */
+.attendance-card {
+  display: flex;
   justify-content: space-between;
-}
-
-#strong .attendance-training-dropdown select {
-  padding: 5px;
-  font-size: 16px;
-}
-
-/* Scoped Attendance Table Layout */
-#strong .attendance-training-table {
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
   width: 100%;
 }
 
-/* Scoped Style for Attendance Rows as Semi-Card Containers */
-#strong #attendance-body tr {
+/* Student Details */
+.attendance-info {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #ffffff;
-  padding: 12px 20px;
-  margin: 8px 0;
-  border-radius: 8px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  border-left: 5px solid #198754;
-  transition: 0.2s;
+  flex-direction: column;
 }
 
-/* Hover effect for scoped attendance rows */
-#strong #attendance-body tr:hover {
-  background: #e9ecef;
-}
-
-/* Scoped Style for Table Cells inside Attendance Row */
-#strong #attendance-body td {
-  flex: 1;
+.attendance-info strong {
   font-size: 16px;
+}
+
+.attendance-info p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Status Badge */
+.attendance-status {
+  background: #198754;
+  color: white;
   font-weight: bold;
-  color: #333;
-  text-align: left;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-align: center;
+  min-width: 40px;
 }
 
-/* Make timestamp align right for better structure */
-#strong #attendance-body td:nth-child(2) {
-  text-align: right;
-}
-
-/* Attendance Training Buttons */
-#strong .attendance-training-buttons {
-  margin-top: 350px;
-  margin-left: 50px;
-}
 
 /* Training Calendar Styling */
-#strong .training-calendar {
+.training-calendar {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -116,7 +95,7 @@
   padding: 10px;
 }
 
-#strong .training-calendar table {
+.training-calendar table {
   width: 100%;
   color: black;
   background-color: white;
@@ -124,24 +103,24 @@
   border-collapse: collapse;
 }
 
-#strong .training-calendar th,
-#strong .training-calendar td {
+.training-calendar th,
+.training-calendar td {
   text-align: center;
   padding: 4px;
   border: 1px solid #ccc;
 }
 
-#strong .training-calendar td.training-day {
+.training-calendar td.training-day {
   color: red;
   font-weight: bold;
 }
 
 /* Training Schedule */
-#strong .training-schedule {
+.training-schedule {
   margin-top: 10px;
 }
 
-#strong .training-schedule .training-item {
+.training-schedule .training-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -152,25 +131,36 @@
   background-color: white;
 }
 
-#strong .training-schedule .training-item span {
+.training-schedule .training-item span {
   font-size: 14px;
 }
 
-#strong .training-schedule {
+.training-schedule {
   position: relative;
 }
 
-#strong .training-add-icon {
+.training-add-icon {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  font-size: 60px;
-  color: #888888;
+  font-size: 60px; /* Adjust size as needed */
+  color: #888888; /* Adjust color as needed */
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
 
-#strong .training-add-icon:hover {
+.training-add-icon:hover {
   transform: scale(1.1);
-  color: #a0a0a0;
+  color: #a0a0a0; /* Adjust hover color as needed */
+}
+
+.training-calendar {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #198754;
+  color: white;
+  text-align: center;
+  padding: 10px;
 }
