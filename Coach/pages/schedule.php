@@ -68,7 +68,7 @@
       </div>
       <div class="modal-body">
         <form id="scheduleForm">
-          <h3 class="form-title">Schedule Training</h3>
+          <h3 class="form-title"></h3>
           <div class="mb-3">
             <label for="scheduleTitle" class="form-label">Title</label>
             <input type="text" class="form-control" id="scheduleTitle" placeholder="Enter title" required>
@@ -93,7 +93,6 @@
     </div>
   </div>
 </div>
-
 
 <script>
   // Tab Switching Logic
