@@ -18,8 +18,8 @@ function fetchAttendance() {
         card.innerHTML = `
           <div class="attendance-details">
             <div class="attendance-info">
-              <strong>Student ID: ${student_id}</strong>
-              <p>Timestamp: ${timestamp}</p>
+              <p>${student_id}</p> <!-- Removed "Student ID: " label -->
+              <p>${timestamp}</p> <!-- Removed "Timestamp: " label -->
             </div>
           </div>
           <div class="attendance-status">P</div>

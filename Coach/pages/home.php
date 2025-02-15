@@ -1,4 +1,4 @@
-<div class="container-fluid p-0 m-0" id="coaches" style="display: block;">  <!-- Set display to block initially -->
+<div class="container-fluid p-0 m-0" id="coaches" style="display: block;">
   <div class="container mt-2">
     <!-- Input and Button at the Top, responsive layout -->
     <div class="d-flex flex-column flex-sm-row justify-content-between mb-4">
@@ -12,3 +12,4 @@
     </div>
   </div>
 </div>
+

@@ -13,7 +13,8 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $notifications[] = [
             'id' => $row['id'],
-            'message' => $row['message']
+            'message' => $row['message'],
+            'created_at' => $row['created_at'] // Send raw timestamp
         ];
     }
 }
