@@ -20,7 +20,7 @@
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item d-flex align-items-center menu-link" href="#" onclick="showSection(event, 'admin-profile');">
+                <a class="dropdown-item d-flex align-items-center menu-link" href="#" onclick="showSection(event, 'coach-profile');">
                     <i class="fa-solid fa-user fa-lg fa-fw me-2" style="color: #017e3e;"></i>Profile
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="../index.php">

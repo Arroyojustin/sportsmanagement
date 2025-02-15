@@ -72,6 +72,7 @@
                     <?php include "pages/scan.php"; ?>
                     <?php include "pages/athletes.php"; ?>
                     <?php include "pages/assign-injury.php"; ?>
+                    <?php include "pages/handle-pro.php"; ?>
                 </div>
 
             </div>
