@@ -1,5 +1,5 @@
 <?php
-include '../../dbconn.php'; // Assuming dbconn.php is in the same directory
+include '../../dbconn.php';
 
 // Check connection
 if ($conn->connect_error) {
@@ -7,21 +7,25 @@ if ($conn->connect_error) {
 }
 
 // Fetch notifications
-$sql = "SELECT message FROM notifications ORDER BY created_at DESC";
+$sql = "SELECT message, created_at FROM notifications ORDER BY created_at DESC";
 $result = $conn->query($sql);
 
 $notifications = [];
 if ($result->num_rows > 0) {
-    // Output each notification message
-    while($row = $result->fetch_assoc()) {
-        $notifications[] = $row['message'];
+    while ($row = $result->fetch_assoc()) {
+        $notifications[] = [
+            'message' => $row['message'],
+            'created_at' => date('M d, Y h:i A', strtotime($row['created_at'])) // Format date
+        ];
     }
 } else {
-    $notifications[] = "No notifications available.";
+    $notifications[] = [
+        'message' => "No notifications available.",
+        'created_at' => ""
+    ];
 }
 
 $conn->close();
 
-// Return notifications as JSON
 echo json_encode($notifications);
 ?>

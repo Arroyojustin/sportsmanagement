@@ -1,34 +1,45 @@
-function fetchNotifications() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "controller/notifications.php", true);
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            var notifications = JSON.parse(xhr.responseText);
-            var notificationsContainer = document.querySelector('.studnotification-container');
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Notifications script loaded successfully."); // Debugging
 
-            // Clear previous notifications
-            notificationsContainer.innerHTML = '';
+    function fetchNotifications() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "controller/notifications.php", true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var notifications = JSON.parse(xhr.responseText);
+                var notificationsContainer = document.querySelector('.studnotification-container');
 
-            // Display each notification as an individual card
-            notifications.forEach(function (message) {
-                // Create a card for each notification
-                var notificationCard = document.createElement('div');
-                notificationCard.classList.add('notification-card');  // Give the card class for styling
+                if (!notificationsContainer) {
+                    console.error("Notification container not found.");
+                    return;
+                }
 
-                var notificationText = document.createElement('p');  // Wrap the message in a <p> tag for proper formatting
-                notificationText.textContent = message;
+                // Clear previous notifications
+                notificationsContainer.innerHTML = '';
 
-                // Append the message to the card
-                notificationCard.appendChild(notificationText);
+                notifications.forEach(function (notif) {
+                    var notificationCard = document.createElement('div');
+                    notificationCard.classList.add('notification-card');
 
-                // Add the card to the container
-                notificationsContainer.appendChild(notificationCard);
-            });
-        } else {
-            console.error('Error fetching notifications');
-        }
-    };
-    xhr.send();
-}
+                    var notificationText = document.createElement('p');
+                    notificationText.textContent = notif.message;
 
-window.onload = fetchNotifications;
+                    var notificationTime = document.createElement('small'); // Timestamp
+                    notificationTime.textContent = notif.created_at;
+                    notificationTime.classList.add('notif-time'); // Class for styling
+
+                    notificationCard.appendChild(notificationText);
+                    notificationCard.appendChild(notificationTime);
+                    notificationsContainer.appendChild(notificationCard);
+                });
+
+                console.log("Notifications loaded successfully."); // Debugging
+            } else {
+                console.error('Error fetching notifications');
+            }
+        };
+        xhr.send();
+    }
+
+    fetchNotifications();
+});

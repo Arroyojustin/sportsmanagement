@@ -1,26 +1,36 @@
 .notification-card {
-    background-color: #f8f9fa; /* Light gray background */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px; /* Inner padding */
-    margin-bottom: 10px; /* Space between cards */
-    box-shadow: rgba(83, 107, 126, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; /* Subtle shadow */
-    border-left: 5px solid #198754; /* Green left border */
-    position: relative; /* Ensure proper positioning */
-    display: flex; /* Flexbox for centering */
-    align-items: center; /* Vertically center content */
-    width: 100%; /* Ensure it takes full width of the container */
-    max-width: 400px; /* Optional max width */
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: rgba(83, 107, 126, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-left: 5px solid #198754;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 400px;
     left: 50%;
-    transform: translateX(-50%); /* Center horizontally */
+    transform: translateX(-50%);
 }
 
 .studnotification-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;  /* Space between individual cards */
+    gap: 10px;
     justify-content: center;
-    align-items: center;  /* Center content horizontally */
-    padding: 20px; /* Optional padding around the container */
+    align-items: center;
+    padding: 20px;
+}
+
+/* Timestamp Styling */
+.notif-time {
+    display: block;
+    text-align: right;
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-top: 5px;
 }
 
 /* Responsive adjustments */
@@ -33,7 +43,7 @@
 }
 
 .studnotification-container p {
-    margin: 0; /* Remove default margin */
-    font-size: 1rem; /* Adjust font size */
-    color: #343a40; /* Dark gray text */
+    margin: 0;
+    font-size: 1rem;
+    color: #343a40;
 }

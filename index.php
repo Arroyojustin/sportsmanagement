@@ -6,6 +6,7 @@
     <title>ASIATECH Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Petrona&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./Upload/RAWR.png">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./assets/css/login.css">

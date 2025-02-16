@@ -1,4 +1,4 @@
-<div class="container-fluid px-3 py-1" id="coach-profile" style="display: none;">
+<div class="container-fluid px-3 py-1" id="coach-profile">
     <div class="row g-3">
         <!-- Left Section -->
         <div class="col-lg-4 col-md-5 bg-light d-flex flex-column align-items-center py-1 text-center border-end">
@@ -38,7 +38,10 @@
 
             <div class="mb-3">
                 <label for="phone_number" class="form-label">Phone Number</label>
-                <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                <input type="text" class="form-control" id="phone_number" name="phone_number" required maxlength="11" minlength="11" pattern="[0-9]{11}" title="Phone number must be exactly 11 digits">
+                <div class="invalid-feedback">
+                    Please enter a valid 11-digit phone number.
+                </div>
             </div>
 
             <div class="d-flex justify-content-between align-items-center mt-4 gap-3">
@@ -61,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("last_name").value = data.lastname;
             document.getElementById("phone_number").value = data.phone_no || '';
 
-            // Set initials
             let initials = data.firstname.charAt(0) + data.lastname.charAt(0);
             document.querySelector(".initials").textContent = initials.toUpperCase();
         } else {
@@ -69,5 +71,55 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     })
     .catch(error => console.error("Fetch Error:", error));
+
+    // Validate phone number input (only numbers, max 11 digits)
+    document.getElementById("phone_number").addEventListener("input", function(event) {
+        this.value = this.value.replace(/\D/g, ''); // Remove non-numeric characters
+        if (this.value.length > 11) {
+            this.value = this.value.slice(0, 11); // Limit to 11 digits
+        }
+    });
+
+    // Handle Save Changes button
+    document.getElementById("saveChangesBtn").addEventListener("click", function(event) {
+        event.preventDefault();
+
+        let firstName = document.getElementById("first_name").value.trim();
+        let lastName = document.getElementById("last_name").value.trim();
+        let phoneNumber = document.getElementById("phone_number").value.trim();
+
+        if (phoneNumber.length !== 11) {
+            document.getElementById("phone_number").classList.add("is-invalid");
+            return;
+        } else {
+            document.getElementById("phone_number").classList.remove("is-invalid");
+        }
+
+        let formData = new FormData();
+        formData.append("first_name", firstName);
+        formData.append("last_name", lastName);
+        formData.append("phone_number", phoneNumber);
+
+        fetch('controller/coach_data.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                // Update displayed values without reloading
+                document.getElementById("first_name").value = firstName;
+                document.getElementById("last_name").value = lastName;
+                document.getElementById("phone_number").value = phoneNumber;
+                
+                alert("Profile updated successfully!");
+            } else {
+                alert("Error: " + data.message);
+            }
+        })
+        .catch(error => console.error("Update Error:", error));
+    });
 });
 </script>
+
+
