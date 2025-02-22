@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../assets/css/coach css/scann.css">
     <link rel="stylesheet" href="../assets/css/coach css/notif.css">
     <link rel="stylesheet" href="../assets/css/coach css/assign.css">
+    <link rel="stylesheet" href="../assets/css/coach css/table-scholar.css">
     <!-- <link rel="stylesheet" href="../assets/css/coach css/table-scholar.css"> -->
     <link rel="icon" type="image/x-icon" href="../Upload/RAWR.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -73,6 +74,7 @@
                     <?php include "pages/athletes.php"; ?>
                     <?php include "pages/assign-injury.php"; ?>
                     <?php include "pages/handle-pro.php"; ?>
+                    <?php include "pages/guide-scholar.php"; ?>
                 </div>
 
             </div>

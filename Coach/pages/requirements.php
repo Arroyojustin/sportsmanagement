@@ -31,4 +31,10 @@
             </div>
         </div>
     </div>
+
+    <!-- Apply as Scholar Button at the Very Bottom -->
+    <div class="container text-center mt-4 mb-4">
+        <button id="apply-scholar-btn" onclick="showSection(event, 'guide-scho')">Apply Scholar</button>
+    </div>
 </div>
+

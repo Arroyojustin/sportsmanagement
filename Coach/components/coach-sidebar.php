@@ -44,7 +44,7 @@
         }
 
         // Hide all sections
-        document.querySelectorAll('#coaches, #required, #strong, #athlete, #scanners, #remarks, #coach-profile').forEach(section => {
+        document.querySelectorAll('#coaches, #required, #strong, #athlete, #scanners, #remarks, #coach-profile, #guide-scho').forEach(section => {
             section.style.display = 'none';
         });
 
