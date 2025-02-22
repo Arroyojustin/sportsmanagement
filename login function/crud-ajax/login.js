@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $('#loginForm').on('submit', function(e) {
+$(document).ready(function () {
+    $('#loginForm').on('submit', function (e) {
         e.preventDefault();
 
         // Show the loading spinner (if needed)
@@ -9,14 +9,16 @@ $(document).ready(function() {
             type: 'POST',
             url: 'login function/controller/login_process.php',  // Corrected path
             data: $(this).serialize(),
-            success: function(response) {
+            success: function (response) {
                 // Parse JSON response
                 let jsonResponse = typeof response === 'string' ? JSON.parse(response) : response;
-        
+
                 // Hide the loading spinner
                 $('#loadingSpinner').addClass('d-none');
-        
+
                 if (jsonResponse.status === 'success') {
+                    document.getElementById("email").setAttribute("disabled", "true");
+                    document.getElementById("password").setAttribute("disabled", "true");
                     Swal.fire({
                         toast: true,
                         position: 'top-end',
@@ -38,7 +40,7 @@ $(document).ready(function() {
                     });
                 }
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 $('#loadingSpinner').addClass('d-none');
                 Swal.fire({
                     icon: 'error',
@@ -46,7 +48,7 @@ $(document).ready(function() {
                     text: 'An error occurred. Please try again.',
                 });
             }
-        });        
+        });
     });
 });
 
@@ -54,7 +56,7 @@ $(document).ready(function() {
 const showPasswordCheckbox = document.getElementById('show-password');
 const passwordField = document.getElementById('password');
 
-showPasswordCheckbox.addEventListener('change', function() {
+showPasswordCheckbox.addEventListener('change', function () {
     if (this.checked) {
         passwordField.type = 'text';
     } else {

@@ -27,7 +27,7 @@
         <!-- Right Section with Login Form -->
         <div class="right-section">
             <form class="login-form" id="loginForm" method="POST" action="">
-                <input type="email" name="email" placeholder="Email" required>
+                <input type="email" name="email" id="email" placeholder="Email" required>
                 <div class="password-container">
                     <input type="password" name="password" id="password" placeholder="Password" required>
                     <label for="show-password">
